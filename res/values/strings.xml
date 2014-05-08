@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ServiceExample</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="my_service_started">The random service has started.</string>
+    <string name="notification_title">Random service</string>
+    <string name="my_service_running">The random service is running.</string>
+
+</resources>
