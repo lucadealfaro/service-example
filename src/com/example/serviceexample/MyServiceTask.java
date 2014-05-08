@@ -47,9 +47,6 @@ public class MyServiceTask implements Runnable {
 
     public void addResultCallback(ResultCallback resultCallback) {
     	Log.i(LOG_TAG, "Adding result callback");
-    	// Note that there may be no available bitmaps for this.
-    	// The bitmaps need to be allocated later, once we know
-    	// the preview size.
         resultCallbacks.add(resultCallback);
     }
 
@@ -57,11 +54,11 @@ public class MyServiceTask implements Runnable {
     	Log.i(LOG_TAG, "Removing result callback");
     	// We remove the callback... 
         resultCallbacks.remove(resultCallback);
-    	// ...and we clear the list of bitmaps.
+    	// ...and we clear the list of results.
     	// Note that this works because, even though mResultCallbacks is a synchronized set,
     	// its cardinality should always be 0 or 1 -- never more than that. 
-    	// We have one viewer only for our bitmaps.
-        // We clear the bitmap buffer, because some bitmap may never be returned to the
+    	// We have one viewer only.
+        // We clear the buffer, because some result may never be returned to the
         // free buffer, so using a new set upon reattachment is important to avoid
         // leaks.
     	freeResults.clear();
