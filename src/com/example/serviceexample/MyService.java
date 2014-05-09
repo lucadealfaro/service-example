@@ -69,7 +69,7 @@ public class MyService extends Service {
 	public int onStartCommand(Intent intent, int flags, int startId) {
 				
         Log.i(LOG_TAG, "Received start id " + startId + ": " + intent);
-        // We start the motion detection thread.
+        // We start the task thread.
     	if (!myThread.isAlive()) {
     		myThread.start();
     	}

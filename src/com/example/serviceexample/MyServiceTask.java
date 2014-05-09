@@ -17,8 +17,10 @@ public class MyServiceTask implements Runnable {
 	private boolean running;
 	private Context context;
 	
-    private Set<ResultCallback> resultCallbacks = Collections.synchronizedSet(new HashSet<ResultCallback>());
-    private ConcurrentLinkedQueue<ServiceResult> freeResults = new ConcurrentLinkedQueue<ServiceResult>();
+    private Set<ResultCallback> resultCallbacks = Collections.synchronizedSet(
+    		new HashSet<ResultCallback>());
+    private ConcurrentLinkedQueue<ServiceResult> freeResults = 
+    		new ConcurrentLinkedQueue<ServiceResult>();
 	
     public MyServiceTask(Context _context) {
     	context = _context;    	
@@ -103,6 +105,7 @@ public class MyServiceTask implements Runnable {
     		if (result != null) {
     			result.intValue = i;
     			for (ResultCallback resultCallback : resultCallbacks) {
+    				Log.i(LOG_TAG, "calling resultCallback for " + result.intValue);
     				resultCallback.onResultReady(result);
     			}
     		}
