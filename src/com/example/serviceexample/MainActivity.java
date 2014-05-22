@@ -1,4 +1,4 @@
-// Copyright 2013 Camiolog Inc.  All rights reserved.
+// Copyright 2014 Luca de Alfaro
 
 package com.example.serviceexample;
 
@@ -60,8 +60,6 @@ public class MainActivity extends Activity
     }
     
     private void bindMyService() {
-    	// We are ready to show images, and we should start getting the bitmaps
-    	// from the motion detection service.
     	// Binds to the service.
     	Log.i(LOG_TAG, "Starting the service");
     	Intent intent = new Intent(this, MyService.class);
@@ -74,7 +72,7 @@ public class MainActivity extends Activity
     private ServiceConnection serviceConnection = new ServiceConnection() {
     	@Override
     	public void onServiceConnected(ComponentName className, IBinder serviceBinder) {
-    		// We have bound to the camera service.
+    		// We have bound.
     		MyBinder binder = (MyBinder) serviceBinder;
     		myService = binder.getService();
     		serviceBound = true;
@@ -138,7 +136,7 @@ public class MainActivity extends Activity
             		Log.i(LOG_TAG, "Displaying: " + result.intValue);
             		TextView tv = (TextView) findViewById(R.id.number_view);
             		tv.setText(Integer.toString(result.intValue));
-            		// Tell the worker that the bitmap is ready to be reused
+            		// Tell the worker that the result holder is ready to be reused
             		if (serviceBound && myService != null) {
             			Log.i(LOG_TAG, "Releasing result holder for " + result.intValue);
             			myService.releaseResult(result);
