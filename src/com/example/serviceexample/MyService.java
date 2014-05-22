@@ -1,5 +1,4 @@
-// Copyright Camiolog Inc, 2014.
-// Luca de Alfaro
+// Copyright 2014 Luca de Alfaro
 
 package com.example.serviceexample;
 
@@ -52,7 +51,7 @@ public class MyService extends Service {
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		showMyNotification();
 
-		// Creates the thread running the camera service.
+		// Creates the thread running the service.
 		myTask = new MyServiceTask(getApplicationContext());
         myThread = new Thread(myTask);
 		myThread.start();
@@ -88,7 +87,7 @@ public class MyService extends Service {
         Log.i(LOG_TAG, "Stopped.");
     }
     
-    // Interface to be able to subscribe to the bitmaps by the service.
+    // Interface to be able to subscribe to the results by the service.
     
     public void releaseResult(ServiceResult result) {
         myTask.releaseResult(result);
